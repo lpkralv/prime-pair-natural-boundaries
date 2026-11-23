@@ -1,6 +1,6 @@
 import PrimePairNB
 
-/-! Prints the axioms of every theorem the paper cites, plus the non-vacuity witnesses `exists_admG`, `exists_admS`, the existence theorems for admissible germs of `S` (`exists_admS_iff`, `exists_admS_near`, `exists_admS_of_two_Binf_lt`), the results for `G₂(s) = Σ (p²+q²)^(-s)` and `G_log(s) = Σ log q (p+q)^(-s)` (`boundary_Sq`, `boundary_mix`, `continuesAlong_Sq`, `continuesAlong_mix`, `every_path_Sq`, `every_path_mix`, `exists_admSq_iff`, `exists_admMix_iff`, `exists_admSq_near`, `exists_admMix_near`) and the two lemmas `HInf.admS_transfer`, `HInf.Fill.admG_to_VInf` named in the paper's correspondence table. Definitions (such as `Hinf` and `Z1` to `Z6`) are not listed separately: they hold no proofs, and they enter through the theorems that take them as hypotheses. Each line should read `[propext, Classical.choice, Quot.sound]`. -/
+/-! Prints the axioms of every theorem the paper cites, plus the non-vacuity witnesses `exists_admG`, `exists_admS`, the existence theorems for admissible germs of `S` (`exists_admS_iff`, `exists_admS_near`, `exists_admS_of_two_Binf_lt`), the results for `G₂(s) = Σ (p²+q²)^(-s)` and `G_log(s) = Σ log q (p+q)^(-s)` (`boundary_Sq`, `boundary_mix`, `continuesAlong_Sq`, `continuesAlong_mix`, `every_path_Sq`, `every_path_mix`, `no_extension_any_path_Sq`, `no_extension_any_path_mix`, `exists_admSq_iff`, `exists_admMix_iff`, `exists_admSq_near`, `exists_admMix_near`) and the two lemmas `HInf.admS_transfer`, `HInf.Fill.admG_to_VInf` named in the paper's correspondence table. Definitions (such as `Hinf` and `Z1` to `Z6`) are not listed separately: they hold no proofs, and they enter through the theorems that take them as hypotheses. Each line should read `[propext, Classical.choice, Quot.sound]`. -/
 
 #print axioms GoldbachBoundaries.HInf.Dth_analyticOn
 #print axioms GoldbachBoundaries.HInf.Dth_eq
@@ -50,6 +50,8 @@ import PrimePairNB
 #print axioms GoldbachBoundaries.HInf.local_model
 #print axioms GoldbachBoundaries.HInf.no_extension_any_path_G
 #print axioms GoldbachBoundaries.HInf.no_extension_any_path_S
+#print axioms GoldbachBoundaries.HInf.no_extension_any_path_Sq
+#print axioms GoldbachBoundaries.HInf.no_extension_any_path_mix
 #print axioms GoldbachBoundaries.HInf.norm_Pth_le
 #print axioms GoldbachBoundaries.HInf.not_analytic_of_germFam
 #print axioms GoldbachBoundaries.HInf.prop71_joint

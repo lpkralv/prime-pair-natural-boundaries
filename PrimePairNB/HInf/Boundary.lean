@@ -10,6 +10,8 @@ import PrimePairNB.HInf.Fill.every_path_stays_G
 import PrimePairNB.HInf.Fill.every_path_stays_S
 import PrimePairNB.HInf.Fill.no_extension_any_path_G
 import PrimePairNB.HInf.Fill.no_extension_any_path_S
+import PrimePairNB.HInf.Fill.no_extension_any_path_Sq
+import PrimePairNB.HInf.Fill.no_extension_any_path_mix
 import PrimePairNB.HInf.Fill.not_analytic_of_germFam
 
 /-!
@@ -105,5 +107,21 @@ theorem no_extension_any_path_S (hH : Hinf) (hZ1 : Z1) (hZ2 : Z2) (hZ3 : Z3) (hZ
 theorem every_path_stays_S (hH : Hinf) (hZ1 : Z1) (hZ2 : Z2) (hZ3 : Z3) (hZ4 : Z4) (hZ5 : Z5)
     {γ : C(unitInterval, ℂ)} (h0 : 1 < (γ 0).re) (hc : ContinuesAlong Sser γ) (t : unitInterval) : 0 < (γ t).re :=
   @Fill.every_path_stays_S hH hZ1 hZ2 hZ3 hZ4 hZ5 γ h0 hc t
+
+/-- A terminal prime-square germ cannot extend meromorphically across `Re s = 1/2`. -/
+theorem no_extension_any_path_Sq (hH : Hinf) (hZ1 : Z1) (hZ2 : Z2) (hZ3 : Z3)
+    (hZ4 : Z4) (hZ5 : Z5) (hZ6 : Z6)
+    {γ : C(unitInterval, ℂ)} (h0 : 1 < (γ 0).re) {g : ℂ → ℂ} (hg : IsTerminalGerm SqSer γ g)
+    (y r : ℝ) (hr : 0 < r) (h1 : γ 1 ∈ ball ((1/2 : ℂ) + (y : ℂ) * I) r) :
+    ¬ GermExtendsMeromorphically g (γ 1) (ball ((1/2 : ℂ) + (y : ℂ) * I) r) :=
+  @Fill.no_extension_any_path_Sq hH hZ1 hZ2 hZ3 hZ4 hZ5 hZ6 γ h0 g hg y r hr h1
+
+/-- A terminal mixed-series germ cannot extend meromorphically across `Re s = 1`. -/
+theorem no_extension_any_path_mix (hH : Hinf) (hZ1 : Z1) (hZ2 : Z2) (hZ3 : Z3)
+    (hZ4 : Z4) (hZ5 : Z5) (hZ6 : Z6)
+    {γ : C(unitInterval, ℂ)} (h0 : 2 < (γ 0).re) {g : ℂ → ℂ} (hg : IsTerminalGerm MixSer γ g)
+    (y r : ℝ) (hr : 0 < r) (h1 : γ 1 ∈ ball (1 + (y : ℂ) * I) r) :
+    ¬ GermExtendsMeromorphically g (γ 1) (ball (1 + (y : ℂ) * I) r) :=
+  @Fill.no_extension_any_path_mix hH hZ1 hZ2 hZ3 hZ4 hZ5 hZ6 γ h0 g hg y r hr h1
 
 end GoldbachBoundaries.HInf

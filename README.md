@@ -7,9 +7,9 @@ Lean 4 code for the paper
 > Louis P. Slothouber, *Natural boundaries of prime-pair Dirichlet series without the Riemann Hypothesis*,
 > preprint, 2026.
 
-This is release `v1.1`, the version the paper describes. It adds to `v1.0` the results on the two series G₂ and
-G_log (Theorem 1.3 and Section 9 of the paper); nothing in `v1.0` was removed or renamed. License: Apache-2.0
-(`LICENSE`).
+This is release `v1.2`. It adds any-path non-extension theorems for G₂ and G_log, including paths that end at
+catalogue points. Release `v1.1` introduced the results for these series in Theorem 1.3 and Section 9 of the paper.
+License: Apache-2.0 (`LICENSE`).
 
 ## What it proves
 
@@ -38,6 +38,7 @@ The main declarations are
 | Theorem 8.2 (paths) | `GoldbachBoundaries.HInf.every_path_stays_G`, `_S`, `GoldbachBoundaries.HInf.no_extension_any_path_G`, `_S`, `GoldbachBoundaries.HInf.cor_domain_G`, `_S` |
 | Corollary 8.3 | `GoldbachBoundaries.HInf.every_path_G`, `GoldbachBoundaries.HInf.every_path_S`; conjunction `GoldbachBoundaries.HInf.every_path_GS` |
 | Theorem 1.3 (G₂ and G_log) | (a) `GoldbachBoundaries.HInf.continuesAlong_Sq`, `_mix`, `GoldbachBoundaries.HInf.exists_admSq_iff`, `exists_admMix_iff`; admissible germs near the line: `GoldbachBoundaries.HInf.exists_admSq_near`, `exists_admMix_near`; (b) `GoldbachBoundaries.HInf.boundary_Sq`, `boundary_mix`; (c) `GoldbachBoundaries.HInf.every_path_Sq`, `every_path_mix` |
+| Any-path non-extension for G₂ and G_log | `GoldbachBoundaries.HInf.no_extension_any_path_Sq`, `GoldbachBoundaries.HInf.no_extension_any_path_mix` |
 | Theorem 10.1 (under RH) | `GoldbachBoundaries.thm_A`, `GoldbachBoundaries.rem_every_path`, `GoldbachBoundaries.cor_T_poles` |
 
 `CORRESPONDENCE.md` maps every numbered result of the paper to its Lean declarations, with their exact hypotheses
@@ -81,8 +82,8 @@ their only hypothesis.
 
 ## Layout
 
-The library has 359 Lean files (39,230 lines): the root `PrimePairNB.lean` and 358 files under `PrimePairNB/`
-(128 in `Paper2/`, 139 in `HInf/`, 63 in `ThmA/`, 17 in `TIdentity/`, the rest at the top level).
+The library has 361 Lean files (39,337 lines): the root `PrimePairNB.lean` and 360 files under `PrimePairNB/`
+(128 in `Paper2/`, 141 in `HInf/`, 63 in `ThmA/`, 17 in `TIdentity/`, the rest at the top level).
 `CheckAxioms.lean` is not counted.
 Its declarations live in the namespace `GoldbachBoundaries` and its sub-namespaces `Paper2`, `HInf`, `ThmA` and
 `TIdentity`, kept from the larger development the library was extracted from; the directory layout follows that
@@ -108,18 +109,16 @@ With elan installed (it reads `lean-toolchain` and fetches the right Lean), from
     lake env lean CheckAxioms.lean  # prints the axioms of every cited theorem
 
 `lake build` should end with `Build completed successfully`. `CheckAxioms.lean` runs `#print axioms` on each of
-the 72 theorems listed in it; every line should read
+the 74 theorems listed in it; every line should read
 
     'GoldbachBoundaries.Paper2.thm_boundary' depends on axioms: [propext, Classical.choice, Quot.sound]
 
 with the declaration's name. These are the three standard axioms of Lean's logic; no `sorry` and no other axiom
 is used. The library contains no `sorry`, `admit`, `native_decide` or `axiom` declaration.
 
-These steps were checked on an exact copy of this release's files in an empty folder (macOS, Apple silicon),
-with the pinned Lean 4.34.0: `lake exe cache get` took about 2 minutes (the Mathlib cache files were already on
-the machine and only had to be unpacked; a first download takes longer), and `lake build` took about 52 minutes,
-most of it compiling PrimeNumberTheoremAnd and this library. It ended with
-`Build completed successfully (9368 jobs).`, and all 72 lines of `CheckAxioms.lean` listed only `propext`,
+The v1.2 clean build used the unpacked Mathlib cache on macOS (Apple silicon) with the pinned Lean 4.34.0.
+It rebuilt PrimeNumberTheoremAnd and this library in about 95 minutes and ended with
+`Build completed successfully (9370 jobs).` All 74 lines of `CheckAxioms.lean` listed only `propext`,
 `Classical.choice` and `Quot.sound`.
 
 The build prints warnings. Those in `PrimePairNB` are linter and deprecation notices. Two are

@@ -151,6 +151,30 @@ theorem pathGood_all {F : ℂ → ℂ} (hH : Hinf) (hZ1 : Z1)
   have : t ∈ A := huniv ▸ mem_univ t
   exact this
 
+/-- Near any terminal point, the same proposed extension reaches an admissible germ. -/
+theorem no_extension_any_path {F : ℂ → ℂ} (hH : Hinf) (hZ1 : Z1)
+    (hF : ∀ s : ℂ, 2 < s.re → AnalyticAt ℂ F s)
+    (hboundary : ∀ (g : ℂ → ℂ) (s : ℂ), Adm F g s → ∀ y r : ℝ, 0 < r →
+      s ∈ ball (1 + (y : ℂ) * I) r →
+      ¬ GermExtendsMeromorphically g s (ball (1 + (y : ℂ) * I) r))
+    {γ : C(unitInterval, ℂ)} (h0 : 2 < (γ 0).re) {g : ℂ → ℂ}
+    (hg : IsTerminalGerm F γ g) (y r : ℝ) (hr : 0 < r)
+    (h1 : γ 1 ∈ ball (1 + (y : ℂ) * I) r) :
+    ¬ GermExtendsMeromorphically g (γ 1) (ball (1 + (y : ℂ) * I) r) := by
+  rintro ⟨-, M, hMm, hMg⟩
+  obtain ⟨f, hf, hf0, hg1⟩ := hg
+  obtain ⟨ρ, hρ, -, -, had⟩ := pathGood_all hH hZ1 hF hboundary h0 hf hf0 1
+  obtain ⟨M', hM'm, hM'g, -⟩ := ThmA.exists_meromorphic_update hMm hMg
+  obtain ⟨ε, hε, heq⟩ := Metric.eventually_nhds_iff_ball.mp (hM'g.trans hg1)
+  let V := (ball (γ 1) ρ ∩ ball (γ 1) ε) ∩ ball (1 + (y : ℂ) * I) r
+  have hVo : IsOpen V := (isOpen_ball.inter isOpen_ball).inter isOpen_ball
+  obtain ⟨w, hw, hwP⟩ := exists_not_pinch hVo ⟨γ 1, ⟨mem_ball_self hρ, mem_ball_self hε⟩, h1⟩
+  have hMw : M' =ᶠ[𝓝 w] f 1 := by
+    filter_upwards [hVo.mem_nhds hw] with z hz
+    exact heq z hz.1.2
+  exact hboundary (f 1) w (had w hw.1.1 (not_catG_of_not_pinch hwP)) y r hr hw.2
+    ⟨hw.2, M', hM'm, hMw.filter_mono nhdsWithin_le_nhds⟩
+
 /-- Every continuation has an admissible terminal germ off the catalogue. -/
 theorem every_path {F : ℂ → ℂ} (hH : Hinf) (hZ1 : Z1)
     (hF : ∀ s : ℂ, 2 < s.re → AnalyticAt ℂ F s)
