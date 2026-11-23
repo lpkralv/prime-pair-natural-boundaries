@@ -7,7 +7,7 @@ Lean 4 code for the paper
 > Louis P. Slothouber, *Natural boundaries of prime-pair Dirichlet series without the Riemann Hypothesis*,
 > preprint, 2026.
 
-This is release `v1.2`. It adds any-path non-extension theorems for G₂ and G_log, including paths that end at
+This is release `v1.2.1`. Release `v1.2` added any-path non-extension theorems for G₂ and G_log, including paths that end at
 catalogue points. Release `v1.1` introduced the results for these series in Theorem 1.3 and Section 9 of the paper.
 License: Apache-2.0 (`LICENSE`).
 
@@ -93,6 +93,8 @@ The library requires PrimeNumberTheoremAnd directly and uses Mathlib through it;
 and the further packages they depend on, 14 packages in all.
 
 ## Versions
+
+* 1.2.1: CORRESPONDENCE.md updated for the two v1.2 declarations; no Lean change.
 
 * Lean 4.34.0 (`lean-toolchain`)
 * Mathlib, tag v4.34.0
