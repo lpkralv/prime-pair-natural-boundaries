@@ -1,11 +1,10 @@
-# Lean formalization: natural boundaries of prime-pair Dirichlet series without the Riemann Hypothesis
+# Lean formalization: natural boundaries of prime-pair Dirichlet series
 
 Louis P. Slothouber
 
 Lean 4 code for the paper
 
-> Louis P. Slothouber, *Natural boundaries of prime-pair Dirichlet series without the Riemann Hypothesis*,
-> preprint, 2026.
+> Louis P. Slothouber, *Natural boundaries of prime-pair Dirichlet series*, preprint, 2026.
 
 This is release `v1.2.1`. Release `v1.2` added any-path non-extension theorems for G₂ and G_log, including paths that end at
 catalogue points. Release `v1.1` introduced the results for these series in Theorem 1.3 and Section 9 of the paper.
@@ -56,6 +55,16 @@ germs near Re s = 1 come from `GoldbachBoundaries.HInf.continuesAlong_G`. For G�
 `exists_admSq_near` and `exists_admMix_near` give admissible germs in every disc about a point of Re s = 1/2 and
 Re s = 1 respectively, under H∞, Z1 to Z3 and Z6; `exists_admSq_iff` and `exists_admMix_iff` say exactly which
 points carry one.
+
+## Companion documents
+
+The author wrote these with AI assistance while the paper was being developed, so that he could follow and check every step. Other readers may find them useful.
+
+- [Summary](companions/SUMMARY.pdf): what the paper proves, why it matters, and how it was found and checked.
+- [Reading guide](companions/READING-GUIDE.pdf): a section-by-section companion that writes out the steps the paper skips.
+- [Primer](companions/PRIMER.pdf): the background the paper assumes, written for a reader with a computer-science background and some complex analysis. It is also a record of how the author learned the material.
+
+Markdown sources are in the same folder. The paper is the authority; if a companion and the paper disagree, the paper is right.
 
 ## Hypotheses
 
