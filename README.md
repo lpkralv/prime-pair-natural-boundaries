@@ -8,7 +8,7 @@ Lean 4 code for the paper
 
 This is release `v1.2.1`. Release `v1.2` added any-path non-extension theorems for G₂ and G_log, including paths that end at
 catalogue points. Release `v1.1` introduced the results for these series in Theorem 1.3 and Section 9 of the paper.
-License: Apache-2.0 (`LICENSE`).
+License: the Lean code is Apache-2.0 (`LICENSE`); the documents in `companions/` are CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/).
 
 ## What it proves
 
@@ -138,4 +138,6 @@ as the axiom check shows (a dependence on `sorry` would add `sorryAx` to the lis
 
 ## License
 
-Apache License 2.0; see `LICENSE`.
+The Lean code and build files are licensed under the Apache License 2.0; see `LICENSE`.
+
+The documents in `companions/` (summary, primer and reading guide, Markdown and PDF) are licensed under Creative Commons Attribution 4.0 International (CC BY 4.0), https://creativecommons.org/licenses/by/4.0/, the same licence as the paper.
